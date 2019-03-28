@@ -1,0 +1,35 @@
+<div class="main-container">
+  <form [formGroup]="myForm">
+    <div class="row justify-content-center">
+      <div class="col-xs-12 col-12 col-sm-6 col-md-4 form-group">
+        <input type="text" class="form-control mb-3" placeholder="Select your dates" bsDaterangepicker
+          formControlName="range" />
+        <!-- <pre *ngIf="myForm.value.range"
+            class="code-preview">from {{myForm.value.range[0] | date}} to {{myForm.value.range[1] | date}}</pre> -->
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <button class="btn btn-primary" (click)="calculateDates(myForm.value)">Calculate!</button>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="card" style="width: 35rem;" *ngIf="displayResults">
+            <div class="card-header">
+              Information about the selected dates:
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Total number of days: <strong><u>{{daysBetween}}</u></strong> </li>
+              <li class="list-group-item">
+                <p>{{startDate | date: 'medium' }}: {{ startDateMomentIsLeap ? 'Does belong to a leap year': 'Does not belong to  a leap year' }} </p>
+                <p>{{endDate | date: 'medium' }}: {{ endDateMomentIsLeap ? 'Does belong to a leap year': 'Does not belong to  a leap year' }}</p>
+        
+              </li>
+              <li class="list-group-item">Total <strong>Mondays</strong> during selected period: <strong><u>{{mondaysBetween}}</u></strong> </li>
+              <li class="list-group-item"><u><strong>Random fact</strong></u> {{funFactMessage}}</li>
+            </ul>
+          </div>
+    </div>
+  </form>
+
+</div>
